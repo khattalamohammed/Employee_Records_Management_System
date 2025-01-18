@@ -17,9 +17,12 @@ public class JwtUtil {
 
     @Value("${jwt.secret.key}")
     private String secretKey;
+    
+    @Value("${access.token.expiration.milliseconds}")
+    private long accessTokenExpirationTime;
 
-    @Value("${jwt.expiration.milliseconds}")
-    private long expirationTime;
+    @Value("${refresh.token.expiration.milliseconds}")
+    private long refreshTokenExpirationTime;
 
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
@@ -42,12 +45,17 @@ public class JwtUtil {
         return extractExpiration(token).before(new Date());
     }
 
-    public String generateToken(UserDetails userDetails) {
+    public String generateAccessToken(UserDetails userDetails) {
         Map<String, Object> claims = new HashMap<>();
-        return createToken(claims, userDetails.getUsername());
+        return createToken(claims, userDetails.getUsername(), accessTokenExpirationTime);
     }
 
-    private String createToken(Map<String, Object> claims, String subject) {
+    public String generateRefreshToken(UserDetails userDetails) {
+        Map<String, Object> claims = new HashMap<>();
+        return createToken(claims, userDetails.getUsername(), refreshTokenExpirationTime);
+    }
+
+    private String createToken(Map<String, Object> claims, String subject, long expirationTime) {
         return Jwts.builder()
                 .setClaims(claims)
                 .setSubject(subject)

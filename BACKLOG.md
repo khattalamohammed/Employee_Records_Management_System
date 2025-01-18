@@ -5,14 +5,14 @@
 - [x] **Task 2**: Define and implement core entities (e.g., `Employee`, `User`).
 - [x] **Task 3**: Set up and configure the database connection.
 - [x] **Task 4**: Configure Spring Security for authentication and authorization.
+- [x] **Task 5**: Create an authentication controller.
 
 ## In Progress
-- [ ] **Task 5**: Create an authentication controller.
+- [ ] **Task 6**: Implement the `GET /employees` API to fetch all employees.
 
 ## To Do
 ### Backend Development
 - [ ] **Task 5**: Create unit tests for retrieving the list of employees.
-- [ ] **Task 6**: Implement the `GET /employees` API to fetch all employees.
 - [ ] **Task 7**: Create unit tests for adding a new employee.
 - [ ] **Task 8**: Implement the `POST /employees` API to create a new employee.
 - [ ] **Task 9**: Create unit tests for deleting an employee.
