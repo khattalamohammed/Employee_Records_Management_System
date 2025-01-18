@@ -4,9 +4,10 @@
 - [x] **Task 1**: Design and create the database model.
 - [x] **Task 2**: Define and implement core entities (e.g., `Employee`, `User`).
 - [x] **Task 3**: Set up and configure the database connection.
+- [x] **Task 4**: Configure Spring Security for authentication and authorization.
 
 ## In Progress
-- [ ] **Task 4**: Configure Spring Security for authentication and authorization.
+- [ ] **Task 5**: Create an authentication controller.
 
 ## To Do
 ### Backend Development
