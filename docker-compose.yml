@@ -1,8 +1,21 @@
 version: '3.8'
 services:
-  postgres:
+  app:
+    image: hahn-image
+    container_name: hahn-api
+    build: .
+    ports:
+      - "8081:8080"
+    environment:
+      JWT_SECRET_KEY: ThisIsA64CharacterLongSecretKeyForHS512Algorithm1234567890ABCDEF
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/hahn
+      SPRING_DATASOURCE_USERNAME: hahn
+      SPRING_DATASOURCE_PASSWORD: hahn
+    depends_on:
+      - db
+  db:
     image: postgres:15
-    container_name: postgres_container
+    container_name: hahn-db
     restart: always
     ports:
       - "5432:5432"

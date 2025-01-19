@@ -11,9 +11,10 @@
 - [x] **Task 10**: Implement the `DELETE /employees/{id}` API to delete an employee.
 - [x] **Task 11**: Add Swagger documentation for all APIs.
 - [x] **Task 16**: Implementing audit functionality.
+- [x] **Task 17**: Dockerizing the application.
 
 ## In Progress
-- [ ] **Task 17**: Dockerizing the application.
+- [ ] **Task 18**: Documenting the application.
 
 ## To Do
 ### Backend Development
