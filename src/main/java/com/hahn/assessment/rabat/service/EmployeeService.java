@@ -9,4 +9,6 @@ import java.util.List;
 public interface EmployeeService {
 
     Page<EmployeeDTO> getAll(EmployeeFilterDTO filter);
+
+    Long save(EmployeeDTO employeeDTO);
 }

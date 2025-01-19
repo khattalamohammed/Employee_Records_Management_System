@@ -6,9 +6,7 @@ import com.hahn.assessment.rabat.service.EmployeeService;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,8 +22,14 @@ public class EmployeeController {
     }
 
     @GetMapping
-    @PreAuthorize("hasAuthority(T(com.hahn.assessment.rabat.model.enums.SystemRole).ROLE_ADMIN.name())")
+    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_DEPARTMENT_MANAGER', 'ROLE_HR_MANAGER')")
     public ResponseEntity<Page<EmployeeDTO>> getAll(EmployeeFilterDTO filter) {
         return ResponseEntity.ok(employeeService.getAll(filter));
+    }
+
+    @PostMapping
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    public ResponseEntity<Long> saveEmployee(@RequestBody EmployeeDTO employeeDTO) {
+        return ResponseEntity.ok(employeeService.save(employeeDTO));
     }
 }

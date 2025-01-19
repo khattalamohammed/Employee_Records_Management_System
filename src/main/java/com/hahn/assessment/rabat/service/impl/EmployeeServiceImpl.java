@@ -30,4 +30,11 @@ public class EmployeeServiceImpl implements EmployeeService {
                 filter.getPageable());
         return employees.map(employeeMapper::toDto);
     }
+
+    @Override
+    @Transactional
+    public Long save(EmployeeDTO employeeDTO) {
+        Employee employee = employeeMapper.toEntity(employeeDTO);
+        return employeeRepository.save(employee).getId();
+    }
 }
