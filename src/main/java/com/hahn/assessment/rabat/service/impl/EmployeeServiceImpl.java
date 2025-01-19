@@ -1,10 +1,13 @@
 package com.hahn.assessment.rabat.service.impl;
 
+import com.hahn.assessment.rabat.annotation.Auditable;
 import com.hahn.assessment.rabat.dao.EmployeeRepository;
 import com.hahn.assessment.rabat.dao.specification.EmployeeSpecification;
 import com.hahn.assessment.rabat.dto.EmployeeDTO;
 import com.hahn.assessment.rabat.dto.params.EmployeeFilterDTO;
 import com.hahn.assessment.rabat.model.Employee;
+import com.hahn.assessment.rabat.model.enums.ActionType;
+import com.hahn.assessment.rabat.model.enums.EntityName;
 import com.hahn.assessment.rabat.service.EmployeeService;
 import com.hahn.assessment.rabat.service.mapper.EmployeeMapper;
 import jakarta.persistence.EntityNotFoundException;
@@ -34,6 +37,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     @Transactional
+    @Auditable(action = ActionType.CREATE, entity = EntityName.EMPLOYEE)
     public Long save(EmployeeDTO employeeDTO) {
         Employee employee = employeeMapper.toEntity(employeeDTO);
         return employeeRepository.save(employee).getId();
@@ -41,6 +45,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     @Transactional
+    @Auditable(action = ActionType.UPDATE, entity = EntityName.EMPLOYEE)
     public Long update(Long id, EmployeeDTO employeeDTO) {
         Employee employee = employeeRepository.findById(id)
                 .orElseThrow(EntityNotFoundException::new);
@@ -51,9 +56,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     @Transactional
-    public void delete(Long id) {
+    @Auditable(action = ActionType.DELETE, entity = EntityName.EMPLOYEE)
+    public Long delete(Long id) {
         Employee employee = employeeRepository.findById(id)
                 .orElseThrow(EntityNotFoundException::new);
         employeeRepository.delete(employee);
+        return id;
     }
 }

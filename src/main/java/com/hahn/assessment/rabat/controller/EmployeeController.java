@@ -71,10 +71,9 @@ public class EmployeeController {
             description = "Delete an employee by ID.",
             security = @SecurityRequirement(name = "Bearer Authentication")
     )
-    public ResponseEntity<Void> deleteEmployee(
+    public ResponseEntity<Long> deleteEmployee(
             @Parameter(description = "ID of the employee to be deleted")
             @PathVariable Long id) {
-        employeeService.delete(id);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(employeeService.delete(id));
     }
 }

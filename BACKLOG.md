@@ -10,12 +10,14 @@
 - [x] **Task 8**: Implement the `POST /employees` API to create a new employee.
 - [x] **Task 10**: Implement the `DELETE /employees/{id}` API to delete an employee.
 - [x] **Task 11**: Add Swagger documentation for all APIs.
+- [x] **Task 16**: Implementing audit functionality.
 
 ## In Progress
+- [ ] **Task 17**: Dockerizing the application.
 
 ## To Do
-- [ ] **Task 16**: Implementing audit functionality .
 ### Backend Development
+- [ ] **Task 18**: Creating a global exception handler.
 - [ ] **Task 5**: Create unit tests for retrieving the list of employees.
 - [ ] **Task 7**: Create unit tests for adding a new employee.
 - [ ] **Task 9**: Create unit tests for deleting an employee.
