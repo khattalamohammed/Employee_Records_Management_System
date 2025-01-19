@@ -7,6 +7,7 @@ import com.hahn.assessment.rabat.dto.params.EmployeeFilterDTO;
 import com.hahn.assessment.rabat.model.Employee;
 import com.hahn.assessment.rabat.service.EmployeeService;
 import com.hahn.assessment.rabat.service.mapper.EmployeeMapper;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,5 +37,15 @@ public class EmployeeServiceImpl implements EmployeeService {
     public Long save(EmployeeDTO employeeDTO) {
         Employee employee = employeeMapper.toEntity(employeeDTO);
         return employeeRepository.save(employee).getId();
+    }
+
+    @Override
+    @Transactional
+    public Long update(Long id, EmployeeDTO employeeDTO) {
+        Employee employee = employeeRepository.findById(id)
+                .orElseThrow(EntityNotFoundException::new);
+        Employee updatedEmployee = employeeMapper.toEntity(employeeDTO);
+        updatedEmployee.setId(employee.getId());
+        return employeeRepository.save(updatedEmployee).getId();
     }
 }

@@ -11,4 +11,6 @@ public interface EmployeeService {
     Page<EmployeeDTO> getAll(EmployeeFilterDTO filter);
 
     Long save(EmployeeDTO employeeDTO);
+
+    Long update(Long id, EmployeeDTO employeeDTO);
 }
