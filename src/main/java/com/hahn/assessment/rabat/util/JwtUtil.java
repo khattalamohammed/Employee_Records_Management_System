@@ -18,10 +18,10 @@ public class JwtUtil {
     @Value("${jwt.secret.key}")
     private String secretKey;
     
-    @Value("${access.token.expiration.milliseconds}")
+    @Value("${jwt.access.token.expiration.milliseconds}")
     private long accessTokenExpirationTime;
 
-    @Value("${refresh.token.expiration.milliseconds}")
+    @Value("${jwt.refresh.token.expiration.milliseconds}")
     private long refreshTokenExpirationTime;
 
     public String extractUsername(String token) {

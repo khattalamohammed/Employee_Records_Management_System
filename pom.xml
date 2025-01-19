@@ -86,6 +86,19 @@
 			<version>1.8.0</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.mapstruct</groupId>
+			<artifactId>mapstruct</artifactId>
+			<version>1.5.5.Final</version> <!-- Use the latest version -->
+		</dependency>
+
+		<!-- MapStruct Processor (for code generation) -->
+		<dependency>
+			<groupId>org.mapstruct</groupId>
+			<artifactId>mapstruct-processor</artifactId>
+			<version>1.5.5.Final</version> <!-- Use the latest version -->
+			<scope>provided</scope>
+		</dependency>
 	</dependencies>
 
 	<build>

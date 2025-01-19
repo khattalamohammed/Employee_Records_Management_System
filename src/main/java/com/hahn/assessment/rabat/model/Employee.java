@@ -20,7 +20,7 @@ public class Employee extends AbstractEntity{
     @Column(name = "job_title", nullable = false)
     private String jobTitle;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "department_id", nullable = false)
     private Department department;
 
@@ -31,22 +31,17 @@ public class Employee extends AbstractEntity{
     @Column(name = "employment_status", nullable = false)
     private EmploymentStatus status;
 
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     @JoinColumn(name = "contact_id")
     @MapsId
     private Contact contact;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     @JoinColumn(name = "address_id")
     private Address address;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
-    @MapsId
     private User user;
-
-    public String getFullName() {
-        return String.join(" ", firstName, lastName);
-    }
 
 }
