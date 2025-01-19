@@ -1,0 +1,190 @@
+{
+	"info": {
+		"_postman_id": "62b040d4-fe57-4363-91e7-907faa6ee6a8",
+		"name": "hahn-assesment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32171964"
+	},
+	"item": [
+		{
+			"name": "LOGIN",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"user1\",\r\n    \"password\": \"abcd\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL EMPLOYEES",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMSIsImlhdCI6MTczNzMxNzU5NSwiZXhwIjoxNzM3NDAzOTk1fQ.nOhbcOfWFvBSx6-0VkJtJAeSHE70mZrjVOtfjnvI7DU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/employees?status=CONTRACT&query=Sophia",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"employees"
+					],
+					"query": [
+						{
+							"key": "status",
+							"value": "CONTRACT"
+						},
+						{
+							"key": "query",
+							"value": "Sophia"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SAVE EMPLOYEES",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMSIsImlhdCI6MTczNzI4NzcyNCwiZXhwIjoxNzM3Mzc0MTI0fQ.QIvjyZx9kAf7_AII5fGqLbkG7Y1eWPXMRfe8WwxRleQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstName\": \"John\",\r\n  \"lastName\": \"Doe\",\r\n  \"jobTitle\": \"Software Engineer\",\r\n  \"departmentDTO\": {\r\n    \"id\": 1,\r\n    \"name\": \"Engineering\"\r\n  },\r\n  \"hireDate\": \"2023-07-15\",\r\n  \"status\": \"FULL_TIME\",\r\n  \"contactDTO\": {\r\n    \"email\": \"john.doe@example.com\",\r\n    \"phoneNumber\": \"+1234567890\"\r\n  },\r\n  \"addressDTO\": {\r\n    \"streetAddress\": \"123 Main Street\",\r\n    \"city\": \"San Francisco\",\r\n    \"state\": \"CA\",\r\n    \"postalCode\": \"94105\",\r\n    \"country\": \"USA\"\r\n  }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/employees",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"employees"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE EMPLOYEES",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMSIsImlhdCI6MTczNzI4NzcyNCwiZXhwIjoxNzM3Mzc0MTI0fQ.QIvjyZx9kAf7_AII5fGqLbkG7Y1eWPXMRfe8WwxRleQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/employees/16",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"employees",
+						"16"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE EMPLOYEES",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMSIsImlhdCI6MTczNzI4NzcyNCwiZXhwIjoxNzM3Mzc0MTI0fQ.QIvjyZx9kAf7_AII5fGqLbkG7Y1eWPXMRfe8WwxRleQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstName\": \"John\",\r\n  \"lastName\": \"Doe\",\r\n  \"jobTitle\": \"Software Engineer\",\r\n  \"departmentDTO\": {\r\n    \"id\": 1,\r\n    \"name\": \"Engineering\"\r\n  },\r\n  \"hireDate\": \"2023-07-15\",\r\n  \"status\": \"PART_TIME\",\r\n  \"contactDTO\": {\r\n    \"email\": \"john.doe@example.com\",\r\n    \"phoneNumber\": \"+1234567890\"\r\n  },\r\n  \"addressDTO\": {\r\n    \"streetAddress\": \"123 Main Street\",\r\n    \"city\": \"San Francisco\",\r\n    \"state\": \"CA\",\r\n    \"postalCode\": \"94105\",\r\n    \"country\": \"USA\"\r\n  }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/employees/17",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"employees",
+						"17"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
