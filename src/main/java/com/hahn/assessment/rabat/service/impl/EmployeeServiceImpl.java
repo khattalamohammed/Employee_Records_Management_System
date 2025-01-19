@@ -48,4 +48,12 @@ public class EmployeeServiceImpl implements EmployeeService {
         updatedEmployee.setId(employee.getId());
         return employeeRepository.save(updatedEmployee).getId();
     }
+
+    @Override
+    @Transactional
+    public void delete(Long id) {
+        Employee employee = employeeRepository.findById(id)
+                .orElseThrow(EntityNotFoundException::new);
+        employeeRepository.delete(employee);
+    }
 }
